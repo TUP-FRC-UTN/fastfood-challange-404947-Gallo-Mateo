@@ -1,0 +1,31 @@
+<div class="container-fluid border border-secondary m-1 p-1">
+    <div class="container-fluid border border-dark m-1 p-1">
+        <h3 class="text-dark">Ristoranti Giallo Gallo</h3>
+        <p class="text-secondary">Pedidos ingresados:</p>
+
+        <p>[
+            @for (pedido of pedidosListado; track pedido; let index = $index) {
+                @if (index+1 === pedidosListado.length) {
+                    <span>
+                        ( "nombre": <span class="fw-bold">"{{pedido.name}}"</span>, 
+                        "descripcion": <span class="fw-bold">"{{pedido.description}}"</span>,
+                        "numero": <span class="fw-bold">{{pedido.number}}</span> )
+                    </span>
+                } @else {
+                    <span>
+                        ( "nombre": <span class="fw-bold">"{{pedido.name}}"</span>, 
+                        "descripcion": <span class="fw-bold">"{{pedido.description}}"</span>,
+                        "numero": <span class="fw-bold">{{pedido.number}}</span> ),
+                    </span>
+                }
+            }
+            ]
+        </p>
+
+    </div>
+
+    <app-delivery-point></app-delivery-point>
+    <app-pos></app-pos>
+    <app-kitchen></app-kitchen>
+
+</div>

@@ -1,0 +1,36 @@
+<div class="container-fluid border border-warning m-1 p-1">
+    <h5 class="text-warning">Kitchen</h5>
+
+    <h6 class="text-secondary">Pendiente de cocinar:</h6>
+    <ul>
+            @if (pedidosPendientes.length > 0) {
+                @for(pedido of pedidosPendientes; track pedido; let index = $index){
+                    <li> 
+                        {{pedido.number}} - <span class="fw-bold">{{pedido.description}}</span> 
+                        <button (click)="cocinarPedido(pedido)" [disabled]="pedidosEnCoccion.length == 1" class="btn btn-secondary m-1 p-1">
+                            Cocinar!
+                        </button> 
+                    </li>
+                }
+            } @else {
+                <li class="text-secondary">No hay pedidos pendientes!</li>
+            }
+    </ul>
+
+    <h6 class="text-secondary">Pedidos en cocción:</h6>
+    <ul>
+        @if (pedidosEnCoccion.length > 0) {
+            @for(pedido of pedidosEnCoccion; track pedido; let index = $index){
+                <li class=""> 
+                    {{pedido.number}} - <span class="fw-bold">{{pedido.name}}</span> 
+                    <button (click)="pedidoTerminado(pedido)" class="btn btn-secondary m-1 p-1">
+                        Pedido Terminado!
+                    </button> 
+                </li>
+            }
+        } @else {
+            <p class="text-secondary">No hay pedidos en cocción!</p>
+        }
+    </ul>
+
+</div>

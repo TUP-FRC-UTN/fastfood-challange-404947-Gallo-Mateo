@@ -1,0 +1,18 @@
+<div class="container-fluid border border-success m-1 p-1">
+    <h5 class="text-success">Delivery Point</h5>
+    <h6 class="text-secondary">Pedidos listos para entregar:</h6>
+    <ul>
+        @if (pedidosListos.length > 0) {
+            @for(pedido of pedidosListos; track pedido; let index = $index){
+                <li class=""> 
+                    {{pedido.number}} - <span class="fw-bold">{{pedido.name}}</span> 
+                    <button (click)="entregarPedido(pedido)" class="btn btn-secondary m-1 p-1">
+                        Entregar
+                    </button> 
+                </li>
+            }
+        } @else {
+            <li class="text-secondary">No hay pedidos terminados...</li>
+        }
+    </ul>
+</div>

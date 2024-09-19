@@ -1,0 +1,46 @@
+<div class="container-fluid border border-danger m-1 p-1">
+    <h5 class="text-danger">Point Of Sell</h5>
+    <h6 class="text-secondary">Ingrese su pedido:</h6>
+
+    <form #form="ngForm" (ngSubmit)="ordenarPedido(form)" class="m-1 p-1">
+        <div class="row mb-3 form-group align-items-center">
+            <label for="name" class="col-1 col-form-label text-end">Nombre</label>
+            <div class="col-3">
+              <input name="name" type="text" class="form-control" id="name" placeholder="Ingrese el nombre"
+                maxlength="50"
+                required 
+                #name="ngModel"
+                [(ngModel)]="pedido.name"
+                [ngClass]="{
+                    'is-invalid': name.invalid && (name.dirty || name.touched),
+                    'is-valid': name.valid && (name.dirty || name.touched)
+                 }"
+              >
+            </div>
+          </div>
+          
+          <div class="row mb-3 form-group align-items-center">
+            <label for="description" class="col-1 col-form-label text-end">Pedido</label>
+            <div class="col-3">
+              <input name="description" type="text" class="form-control" id="description" placeholder="Ingrese el pedido"
+                required 
+                maxlength="100"
+                #description="ngModel"
+                [(ngModel)]="pedido.description"
+                [ngClass]="{
+                    'is-invalid': name.invalid && (name.dirty || name.touched),
+                    'is-valid': name.valid && (name.dirty || name.touched)
+                 }"
+              >
+            </div>
+          </div>
+
+          <div class="col-4 text-center">
+            <button [disabled]="form.invalid" type="submit" class="btn btn-primary p-1" name="guardarForm" id="guardarForm">
+              Ordenar
+            </button>
+          </div>
+          
+    </form>
+
+</div>
